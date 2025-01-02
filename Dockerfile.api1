@@ -1,0 +1,7 @@
+FROM node:14
+WORKDIR /usr/src/app
+COPY api1.js .
+RUN npm install express
+#exponiere den port
+EXPOSE 3001
+CMD ["node", "api1.js"]

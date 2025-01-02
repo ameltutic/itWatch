@@ -1,0 +1,6 @@
+FROM node:14
+
+WORKDIR /app
+COPY api2.js .
+RUN npm install express
+CMD ["node", "api2.js"]
