@@ -5,6 +5,7 @@ const PORT = 3002;
 // Middleware zum Parsen von JSON-Daten
 app.use(express.json());
 
+//http://localhost:3002/api/itWatch2
 // Beispiel-GET-Route
 app.get('/api/itWatch2', (req, res) => {
     res.send({ "WARN" : "Hugo is very restrictive to the JSON format -- validate it!",

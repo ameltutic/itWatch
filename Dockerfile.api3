@@ -1,6 +1,7 @@
 FROM node:18
-
-WORKDIR /app
-COPY api3.js .
+WORKDIR /usr/src/app
+COPY api1.js .
 RUN npm install express
-CMD ["node", "api3.js"]
+#exponiere den port
+EXPOSE 3003
+CMD ["node", "api1.js"]
