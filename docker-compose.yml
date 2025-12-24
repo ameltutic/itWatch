@@ -1,34 +1,45 @@
-version: '3'
-
+version: '3.8'
 services:
   api1:
     build:
       context: .
       dockerfile: Dockerfile.api1
     ports:
-      - "3001:3001"  # Optional, nur für Debugging
+      - "3001:3001"
+    networks:
+      - itwatch
 
   api2:
     build:
       context: .
       dockerfile: Dockerfile.api2
     ports:
-      - "3002:3002"  # Optional, nur für Debugging
+      - "3002:3002"
+    networks:
+      - itwatch
 
   api3:
     build:
       context: .
       dockerfile: Dockerfile.api3
     ports:
-      - "3003:3003"  # Optional, nur für Debugging
+      - "3003:3003"
+    networks:
+      - itwatch
 
   nginx:
     image: nginx:latest
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf  # Passe an, wenn du eine nginx.conf hast
     depends_on:
       - api1
       - api2
       - api3
+    networks:
+      - itwatch
+
+networks:
+  itwatch:
+    driver: bridge
